@@ -6,8 +6,6 @@ class AppRouter {
     print('This is route: ${settings.name}');
 
     switch (settings.name) {
-      case '/':
-        return HomeScreen.route();
       case HomeScreen.routeName:
         return HomeScreen.route();
       case CartScreen.routeName:
