@@ -26,6 +26,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
               .copyWith(color: Colors.white),
         ),
       ),
+      iconTheme: IconThemeData(color: Colors.black),
       actions: [
         IconButton(
           onPressed: () {

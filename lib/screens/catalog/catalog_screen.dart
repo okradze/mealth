@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/widgets/widgets.dart';
 
 class CatalogScreen extends StatelessWidget {
-  static const routeName = '/cart';
+  static const routeName = '/catalog';
 
   static Route route() {
     return MaterialPageRoute(

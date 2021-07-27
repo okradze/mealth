@@ -18,10 +18,10 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(title: 'Zero To Unicorn'),
       bottomNavigationBar: CustomNavBar(),
-      body: Column(
-        children: [
-          Container(
-            child: CarouselSlider(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            CarouselSlider(
               options: CarouselOptions(
                 aspectRatio: 1.5,
                 viewportFraction: 0.9,
@@ -33,18 +33,18 @@ class HomeScreen extends StatelessWidget {
                   .map((category) => HeroCarouselCard(category: category))
                   .toList(),
             ),
-          ),
-          SectionTitle(title: 'RECOMMENDED'),
-          ProductCarousel(
-              products: Product.products
-                  .where((product) => product.isRecommended)
-                  .toList()),
-          SectionTitle(title: 'MOST POPULAR'),
-          ProductCarousel(
-              products: Product.products
-                  .where((product) => product.isPopular)
-                  .toList()),
-        ],
+            SectionTitle(title: 'RECOMMENDED'),
+            ProductCarousel(
+                products: Product.products
+                    .where((product) => product.isRecommended)
+                    .toList()),
+            SectionTitle(title: 'MOST POPULAR'),
+            ProductCarousel(
+                products: Product.products
+                    .where((product) => product.isPopular)
+                    .toList()),
+          ],
+        ),
       ),
     );
   }
