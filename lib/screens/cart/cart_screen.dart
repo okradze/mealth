@@ -43,8 +43,15 @@ class CartScreen extends StatelessWidget {
               children: [
                 CartDeliveryHeader(),
                 SizedBox(height: 15),
-                CartProductCard(product: Product.products[0]),
-                CartProductCard(product: Product.products[1]),
+                SizedBox(
+                  height: 300,
+                  child: ListView.builder(
+                    itemCount: Cart().products.length,
+                    itemBuilder: (ctx, index) {
+                      return CartProductCard(product: Cart().products[index]);
+                    },
+                  ),
+                ),
               ],
             ),
             CartTotal(),
@@ -64,7 +71,7 @@ class CartDeliveryHeader extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          'Add \$20.0 for FREE delivery',
+          Cart().freeDeliveryString,
           style: Theme.of(context).textTheme.headline5,
         ),
         ElevatedButton(
@@ -106,7 +113,8 @@ class CartTotal extends StatelessWidget {
                 children: [
                   Text('SUBTOTAL',
                       style: Theme.of(context).textTheme.headline5),
-                  Text('\$6.42', style: Theme.of(context).textTheme.headline5),
+                  Text('\$${Cart().subtotalString}',
+                      style: Theme.of(context).textTheme.headline5),
                 ],
               ),
               SizedBox(height: 10),
@@ -115,7 +123,8 @@ class CartTotal extends StatelessWidget {
                 children: [
                   Text('DELIVERY FEE',
                       style: Theme.of(context).textTheme.headline5),
-                  Text('\$2.89', style: Theme.of(context).textTheme.headline5),
+                  Text('\$${Cart().deliveryFeeString}',
+                      style: Theme.of(context).textTheme.headline5),
                 ],
               ),
             ],
@@ -141,7 +150,7 @@ class CartTotal extends StatelessWidget {
                             .textTheme
                             .headline5!
                             .copyWith(color: Colors.white)),
-                    Text('\$8.92',
+                    Text('\$${Cart().totalString}',
                         style: Theme.of(context)
                             .textTheme
                             .headline5!
