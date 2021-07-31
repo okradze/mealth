@@ -5,10 +5,12 @@ import 'package:flutter_ecommerce_app/models/models.dart';
 
 class CartProductCard extends StatelessWidget {
   final Product product;
+  final int quantity;
 
   const CartProductCard({
     Key? key,
     required this.product,
+    required this.quantity,
   }) : super(key: key);
 
   @override
@@ -45,7 +47,8 @@ class CartProductCard extends StatelessWidget {
                     },
                     icon: Icon(Icons.remove_circle),
                   ),
-                  Text('1', style: Theme.of(context).textTheme.headline5),
+                  Text('$quantity',
+                      style: Theme.of(context).textTheme.headline5),
                   IconButton(
                     onPressed: () {
                       context

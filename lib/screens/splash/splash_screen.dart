@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/screens/home/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
-  static const routeName = '/splash';
+  static const routeName = 'splash';
 
   static Route route() {
     return MaterialPageRoute(
@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
         child: Image.asset(
-          'assets/images/logo.png',
+          'assets/images/logo1.png',
           width: 200,
           height: 200,
         ),
