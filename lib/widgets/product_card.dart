@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ecommerce_app/bloc/cart/cart_bloc.dart';
+import 'package:flutter_ecommerce_app/bloc/wishlist/wishlist_bloc.dart';
 import 'package:flutter_ecommerce_app/models/models.dart';
 import 'package:flutter_ecommerce_app/screens/screens.dart';
 
@@ -91,6 +92,11 @@ class ProductCard extends StatelessWidget {
                               context
                                   .read<CartBloc>()
                                   .add(AddCartProduct(product: product));
+
+                              final snackBar = SnackBar(
+                                  content: Text('Added to your cart!'));
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
                             },
                             icon: Icon(
                               Icons.add_circle,
@@ -101,14 +107,22 @@ class ProductCard extends StatelessWidget {
                       },
                     ),
                     if (isWishlist)
-                      Expanded(
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.delete,
-                            color: Colors.white,
-                          ),
-                        ),
+                      BlocBuilder<WishlistBloc, WishlistState>(
+                        builder: (context, state) {
+                          return Expanded(
+                            child: IconButton(
+                              onPressed: () {
+                                context
+                                    .read<WishlistBloc>()
+                                    .add(RemoveWishlistProduct(product));
+                              },
+                              icon: Icon(
+                                Icons.delete,
+                                color: Colors.white,
+                              ),
+                            ),
+                          );
+                        },
                       ),
                   ],
                 ),
